@@ -31,7 +31,6 @@ public EditText W;
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        OnReturn();
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
