@@ -18,10 +18,11 @@
         android:layout_width="182dp"
         android:layout_height="77dp"
         android:layout_marginStart="96dp"
+        android:layout_marginTop="323dp"
         android:text="hip-hop"
         app:layout_constraintBottom_toTopOf="@+id/btn2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn3"

@@ -8,32 +8,34 @@
     tools:context=".MainActivity2">
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="138dp"
-        android:layout_height="88dp"
-        android:backgroundTint="#EF0000"
-        android:text="Bank Account $250,000 "
-        app:layout_constraintEnd_toStartOf="@+id/button6"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="575dp" />
-
-    <Button
         android:id="@+id/button5"
         android:layout_width="138dp"
         android:layout_height="88dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#4D0707"
         android:text="Cash $250,000 "
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button6"
-        tools:layout_editor_absoluteY="575dp" />
+        app:layout_constraintStart_toEndOf="@+id/button6" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="138dp"
+        android:layout_height="88dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#EF0000"
+        android:text="Bank Account $250,000 "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="138dp"
         android:layout_height="88dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#4B782D"
         android:text="Credit Card $250,000 "
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,6 +52,17 @@
         android:text="List Of Accounts"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="239dp"
+        android:layout_height="49dp"
+        android:text="Total Balance"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Toast.makeText(getApplicationContext(),"You selected hip-hop", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
 
             }
         });
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Toast.makeText(getApplicationContext(),"You selected rock", Toast.LENGTH_LONG).show();
-
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
             }
         });
         samba.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Toast.makeText(getApplicationContext(),"You selected samba", Toast.LENGTH_LONG).show();
-
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
             }
         });
     }
