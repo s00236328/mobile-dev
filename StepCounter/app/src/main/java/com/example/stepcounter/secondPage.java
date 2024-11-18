@@ -79,9 +79,9 @@ public class secondPage extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
         String formattedDate = dateFormat.format(date);
 
-        caloriesTxt.setText(String.format(Locale.getDefault(), "You burnt %.2f calories", calories));
-        distanceTxt.setText(String.format(Locale.getDefault(), "You travelled %.2f meters", distanceInMeters));
-        timeTxt.setText(String.format(Locale.getDefault(), "Your run was %.0f seconds", totalTimeInSeconds));
-        dateTxt.setText(String.format("Start Time: %s", formattedDate));
+        caloriesTxt.setText(String.format(Locale.getDefault(), "You burnt \n%.2f calories", calories));
+        distanceTxt.setText(String.format(Locale.getDefault(), "You travelled \n%.2f meters", distanceInMeters));
+        timeTxt.setText(String.format(Locale.getDefault(), "Your run was \n%.0f seconds", totalTimeInSeconds));
+        dateTxt.setText(String.format("Start Time: \n%s", formattedDate));
     }
 }
