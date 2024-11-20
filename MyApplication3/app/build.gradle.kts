@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.qrcodescanner"
+    namespace = "com.example.myapplication"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.qrcodescanner"
-        minSdk = 24
-        targetSdk = 33
+        applicationId = "com.example.myapplication"
+        minSdk = 16
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -40,7 +40,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-    implementation("com.google.zxing:core:3.5.2") // ZXing Core library
-    implementation("com.journeyapps:zxing-android-embedded:4.3.0") // Android Integration library
 }
