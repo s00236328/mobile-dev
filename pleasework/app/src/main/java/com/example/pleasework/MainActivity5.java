@@ -52,16 +52,18 @@ public class MainActivity5 extends AppCompatActivity {
         colorHelper = findViewById(R.id.colorHelperView); // Assuming the ColorHelper view is in the layout with ID `colorHelperView`
 
         // Set band colors in ColorHelper view
-        colorHelper.setBandColor1(ColorList.get(0).getDefaultColor());
-        colorHelper.setBandColor2(ColorList.get(1).getDefaultColor());
-        colorHelper.setBandColor3(ColorList.get(2).getDefaultColor());
-        colorHelper.setBandColor4(ColorList.get(3).getDefaultColor());
-
+        //colorHelper.setBandColor1(ColorList.get(0).getDefaultColor());
+      //  colorHelper.setBandColor2(ColorList.get(1).getDefaultColor());
+       // colorHelper.setBandColor3(ColorList.get(2).getDefaultColor());
+      //  colorHelper.setBandColor4(ColorList.get(3).getDefaultColor());
+        for (int i = 0; i < Level; i++) {
+            colorHelper.setBandColor(i,ColorList.get(i).getDefaultColor());   // Set the first band color to red
+        }
         // Start a timer for 5 seconds
         new Handler().postDelayed(() -> {
             // Navigate to the next activity
             Intent intent = new Intent(MainActivity5.this, MainActivity2.class);
-
+            intent.putExtra("Sequence", NumberList);
             startActivity(intent);
             finish(); // Optional: Close the current activity
         }, 5000); // 5000 milliseconds = 5 seconds

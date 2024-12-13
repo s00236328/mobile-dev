@@ -22,7 +22,7 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private float[] accelerometerValues = new float[3];
-    private List<String> sequence;
+    private ArrayList<Integer> sequence;
     private int currentIndex = 0;
     private int score = 0;
     private boolean isProcessing = false;
@@ -41,13 +41,12 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
 
         // Initialize score and sequence
         score = getIntent().getIntExtra("score", 0);
-        sequence = getIntent().getStringArrayListExtra("sequence");
+        sequence = getIntent().getIntegerArrayListExtra("sequence");
         if (sequence == null) {
             sequence = new ArrayList<>();
         }
 
-        // Add new items to the sequence
-        extendSequence(3);
+
 
         // Initialize sensor manager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -89,9 +88,9 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
                     // Player completed the sequence
                     score += sequence.size();
                     Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                    extendSequence(3); // Extend sequence for the next round
-                    intent.putStringArrayListExtra("sequence", (ArrayList<String>) sequence);
-                    intent.putExtra("score", score);
+
+                    intent.putStringArrayListExtra("sequence", (ArrayList<Integer>) sequence);
+                  //  intent.putExtra("score", score);
                     startActivity(intent);
                     finish();
                 }
@@ -117,14 +116,7 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
         return null;
     }
 
-    private void extendSequence(int length) {
-        String[] colors = {"Red", "Blue", "Green", "Yellow"};
-        Random random = new Random();
 
-        for (int i = 0; i < length; i++) {
-            sequence.add(colors[random.nextInt(colors.length)]);
-        }
-    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
