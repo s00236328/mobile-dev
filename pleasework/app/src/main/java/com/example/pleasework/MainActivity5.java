@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity5 extends AppCompatActivity {
     public TextView score;
@@ -35,7 +36,7 @@ public class MainActivity5 extends AppCompatActivity {
             return insets;
         });
 
-        Level = getIntent().getIntExtra("StartLevel", 2);
+        Level = getIntent().getIntExtra("score", 2);
 
         AddLevel();
         score = findViewById(R.id.ScoreTxt);
@@ -57,7 +58,7 @@ public class MainActivity5 extends AppCompatActivity {
        // colorHelper.setBandColor3(ColorList.get(2).getDefaultColor());
       //  colorHelper.setBandColor4(ColorList.get(3).getDefaultColor());
         for (int i = 0; i < Level; i++) {
-            colorHelper.setBandColor(i,ColorList.get(i).getDefaultColor());   // Set the first band color to red
+            colorHelper.setBandColor(i,ColorList.get(i).getDefaultColor());
         }
         // Start a timer for 5 seconds
         new Handler().postDelayed(() -> {

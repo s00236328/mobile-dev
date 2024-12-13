@@ -34,7 +34,7 @@ Button Highscorebtn;
             @Override
             public void onClick(View v) {
                 Intent Game = new Intent(MainActivity.this, MainActivity5.class);
-                Game.putExtra("StartLevel", 2);
+                Game.putExtra("score", 2);
                 startActivity(Game);
             }
         });

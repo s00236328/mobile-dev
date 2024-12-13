@@ -1,6 +1,7 @@
 package com.example.pleasework;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -40,12 +41,16 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
         });
 
         // Initialize score and sequence
-        score = getIntent().getIntExtra("score", 0);
-        sequence = getIntent().getIntegerArrayListExtra("sequence");
+        score = getIntent().getIntExtra("score", 4);
+        sequence = getIntent().getIntegerArrayListExtra("Sequence");
         if (sequence == null) {
             sequence = new ArrayList<>();
         }
-
+        Log.d("GameActivity", "Sequence size: " + (sequence != null ? sequence.size() : 0));
+        if (sequence == null || currentIndex >= sequence.size()) {
+            Log.e("GameActivity", "Index out of bounds or sequence is null");
+            return;
+        }
 
 
         // Initialize sensor manager
@@ -74,27 +79,28 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
 
             System.arraycopy(event.values, 0, accelerometerValues, 0, accelerometerValues.length);
 
-            String direction = detectTilt();
-            if (direction == null) {
+            int direction = detectTilt();
+            if (direction == 0) {
                 return; // Skip if no tilt
             }
 
             Log.d("GameActivity", "Detected direction: " + direction);
             Log.d("GameActivity", "Expected direction: " + sequence.get(currentIndex));
 
-            if (direction.equals(sequence.get(currentIndex))) {
+            if (direction==(sequence.get(currentIndex))) {
                 currentIndex++;
                 if (currentIndex == sequence.size()) {
                     // Player completed the sequence
-                    score += sequence.size();
+                    //score += sequence.size();
                     Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
 
-                    intent.putStringArrayListExtra("sequence", (ArrayList<Integer>) sequence);
-                  //  intent.putExtra("score", score);
+                   // intent.putStringArrayListExtra("sequence", (ArrayList<Integer>) sequence);
+                    intent.putExtra("score", score);
                     startActivity(intent);
                     finish();
                 }
-            } else {
+            } else
+            {
                 // Player failed
                 Intent intent = new Intent(MainActivity2.this, MainActivity4.class);
                 intent.putExtra("score", score);
@@ -108,12 +114,12 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
         }
     }
 
-    private String detectTilt() {
-        if (accelerometerValues[0] > 5) return "Blue";  // Tilt down
-        if (accelerometerValues[0] < -5) return "Red";  // Tilt up
-        if (accelerometerValues[1] > 5) return "Yellow";// Tilt right
-        if (accelerometerValues[1] < -5) return "Green";// Tilt left
-        return null;
+    private int detectTilt() {
+        if (accelerometerValues[0] > 5) return 1;  // Tilt down
+        if (accelerometerValues[0] < -5) return 3;  // Tilt up
+        if (accelerometerValues[1] > 5) return 2;// Tilt right
+        if (accelerometerValues[1] < -5) return 4;// Tilt left
+        return 0;
     }
 
 
