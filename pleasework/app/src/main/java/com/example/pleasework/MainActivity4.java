@@ -47,7 +47,7 @@ private Button Highscorebtn;
 
         saveButton.setOnClickListener(v -> {
             // Save the player's name and score to the database
-            String name =Name.toString();
+            String name =Name.getText().toString();
             dbHelper.insertPlayer(name, Highscore);
 
             // Show a confirmation message

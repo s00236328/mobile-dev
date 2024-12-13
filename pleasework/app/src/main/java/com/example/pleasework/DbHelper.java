@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Name and Version
@@ -28,6 +30,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(CREATE_TABLE); // Create the table
     }
 
@@ -48,22 +51,35 @@ public class DbHelper extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
-    public void GetTop5() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        // Query to get top 5 players sorted by high score in descending order
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DbHelper.TABLE_NAME + " ORDER BY " + DbHelper.COLUMN_HIGHSCORE + " DESC LIMIT 5", null);
+    public String GetTop5() {
 
+        SQLiteDatabase db = this.getReadableDatabase();
+      
+        StringBuilder topPlayers = new StringBuilder();
+        String sql= "SELECT "+COLUMN_NAME+","+COLUMN_HIGHSCORE+" FROM " + DbHelper.TABLE_NAME + " ORDER BY " + DbHelper.COLUMN_HIGHSCORE + " DESC LIMIT 5";
+        // Query to get top 5 players sorted by high score in descending order
+        Cursor cursor = db.rawQuery(sql, null);
+        Log.d("s",sql);
         if (cursor.moveToFirst()) {
+            int rank = 1; // Add ranking numbers
             do {
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_NAME));
                 int highScore = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_HIGHSCORE));
-                //System.out.println("Name: " + name + ", High Score: " + highScore);
-            } while (cursor.moveToNext());
+                Log.d("s",name);
+                // Append formatted name and score
+                topPlayers.append(rank).append(". ").append(name).append(": ").append(highScore).append("\n");
+                rank++;
+            } while (   cursor.moveToNext());
         }
 
         cursor.close();
         db.close();
+        return topPlayers.toString(); // Return the formatted string
     }
+public void DeleteAll(SQLiteDatabase db){
+    db.execSQL("DELETE FROM "+ TABLE_NAME); // Create the table
+}
+
 
 
 }

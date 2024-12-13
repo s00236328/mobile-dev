@@ -2,6 +2,7 @@ package com.example.pleasework;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -29,5 +30,7 @@ public class MainActivity3 extends AppCompatActivity {
         topPlayersTextView = findViewById(R.id.H1txt);
         String topPlayers = dbHelper.GetTop5();
         topPlayersTextView.setText(topPlayers);
+        Log.d("GetTop5", dbHelper.GetTop5());
+
     }
 }

@@ -43,12 +43,14 @@
         android:id="@+id/txtScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="74dp"
-        android:layout_marginBottom="194dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginBottom="88dp"
         android:text="Game Over You Got x "
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/YourNametxt" />
 
     <Button
         android:id="@+id/Savebtn"
