@@ -13,9 +13,11 @@
         android:layout_height="217dp"
         android:layout_below="@id/ScoreTxt"
         android:layout_marginStart="67dp"
+        android:layout_marginTop="107dp"
         android:layout_marginBottom="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ScoreTxt" />
 
     <TextView
         android:id="@+id/ScoreTxt"

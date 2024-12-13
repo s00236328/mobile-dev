@@ -8,7 +8,7 @@
     tools:context=".MainActivity4">
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/againbtn"
         android:layout_width="174dp"
         android:layout_height="99dp"
         android:layout_marginTop="60dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/highbtn"
         android:layout_width="174dp"
         android:layout_height="99dp"
         android:layout_marginEnd="18dp"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="74dp"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/Savebtn"
         android:layout_width="115dp"
         android:layout_height="59dp"
         android:layout_marginStart="20dp"

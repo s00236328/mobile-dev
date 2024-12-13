@@ -12,31 +12,32 @@ public class ColorHelper extends View {
     private Paint paint;
     private int[] bandColors; // Array to hold all band colors
 
-    private static final float BAND_HEIGHT = 40;
-    private static final float BAND_Y1 = 100;
-    private static final float BAND_Y_OFFSET = BAND_HEIGHT + 20; // Offset between bands
+    private static final float BAND_WIDTH = 40;
+    private static final float BAND_X1 = 100;
+    private static final float BAND_X_OFFSET = BAND_WIDTH + 20; // Offset between bands
+    private static final float BAND_Y = 100; // Vertical position of bands
 
     // Constructor
     public ColorHelper(Context context, AttributeSet attrs) {
         super(context, attrs);
         paint = new Paint();
-        bandColors = new int[4]; // Default to 4 bands
+        bandColors = new int[10000]; // Default to 4 bands
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        // Draw the bands
+        // Draw the bands horizontally
         for (int i = 0; i < bandColors.length; i++) {
-            drawColorBand(canvas, bandColors[i], BAND_Y1 + (i * BAND_Y_OFFSET)); // Adjust BAND_Y1, BAND_Y2, etc. based on spacing
+            drawColorBand(canvas, bandColors[i], BAND_X1 + (i * BAND_X_OFFSET)); // Adjust BAND_X1 based on spacing
         }
     }
 
     // Helper method to draw color bands
-    private void drawColorBand(Canvas canvas, int color, float y) {
+    private void drawColorBand(Canvas canvas, int color, float x) {
         paint.setColor(color);
-        canvas.drawRect(100, y, 300, y + BAND_HEIGHT, paint); // Bands of 40 pixels height
+        canvas.drawRect(x, BAND_Y, x + BAND_WIDTH, BAND_Y + BAND_WIDTH, paint); // Bands of 40 pixels width
     }
 
     // Methods to set the band colors
