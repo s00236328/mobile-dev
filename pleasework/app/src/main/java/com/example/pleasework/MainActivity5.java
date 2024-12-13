@@ -1,12 +1,11 @@
 package com.example.pleasework;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -23,6 +22,7 @@ public class MainActivity5 extends AppCompatActivity {
     public int Level;
     public ArrayList<Integer> NumberList = new ArrayList<>();
     public ArrayList<ColorStateList> ColorList = new ArrayList<>();
+    private ColorHelper colorHelper;  // Reference to the ColorHelper view
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +46,25 @@ public class MainActivity5 extends AppCompatActivity {
             ColorList.add(ChangeToColor(NumberList.get(i)));
         }
 
-
         Log.d("DEBUG", "ColorList: " + ColorList.toString());
 
+        // Initialize ColorHelper view
+        colorHelper = findViewById(R.id.colorHelperView); // Assuming the ColorHelper view is in the layout with ID `colorHelperView`
+
+        // Set band colors in ColorHelper view
+        colorHelper.setBandColor1(ColorList.get(0).getDefaultColor());
+        colorHelper.setBandColor2(ColorList.get(1).getDefaultColor());
+        colorHelper.setBandColor3(ColorList.get(2).getDefaultColor());
+        colorHelper.setBandColor4(ColorList.get(3).getDefaultColor());
+
+        // Start a timer for 5 seconds
+        new Handler().postDelayed(() -> {
+            // Navigate to the next activity
+            Intent intent = new Intent(MainActivity5.this, MainActivity2.class);
+
+            startActivity(intent);
+            finish(); // Optional: Close the current activity
+        }, 5000); // 5000 milliseconds = 5 seconds
     }
 
     public void sequence() {
